@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using WebApiPlugin.Identity.Extensions;
+
 namespace WebApiPlugin.Identity.Sample
 {
     public class Program
@@ -9,6 +12,16 @@ namespace WebApiPlugin.Identity.Sample
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            // Added
+            builder.Services.AddDbContext<AppDbContext>(options
+                => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            // Added
+            builder.Services.ConfigureIdentity<AppDbContext>(builder.Configuration, (identityOptions) =>
+            {
+                identityOptions.InitialRole = "Admin";
+            });
+
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())
@@ -18,6 +31,11 @@ namespace WebApiPlugin.Identity.Sample
             }
 
             app.UseHttpsRedirection();
+
+            app.MapGet("api/data", () => Results.Ok(new List<string>() { "1", "2", "3" }));
+
+            // Added
+            app.MapEndpointsForIdentity();
 
             app.Run();
         }
