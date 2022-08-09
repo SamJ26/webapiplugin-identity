@@ -11,15 +11,13 @@ namespace WebApiPlugin.Identity.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection ConfigureIdentity<TUser, TRole, TDbContext>(
+        public static IServiceCollection ConfigureIdentity<TDbContext>(
             this IServiceCollection services,
             IConfiguration configuration,
             Action<Options.IdentityOptions> configureIdentityOptions)
-            where TUser : IdentityUser<Guid>, new()
-            where TRole : IdentityRole<Guid>
             where TDbContext : DbContext
         {
-            services.AddIdentity<TUser, TRole>(options =>
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
                 {
                     options.SignIn.RequireConfirmedPhoneNumber = false;
                     options.SignIn.RequireConfirmedEmail = false;
@@ -68,7 +66,7 @@ namespace WebApiPlugin.Identity.Extensions
                 };
             });
 
-            services.AddScoped<IIdentityService, IdentityService<TUser>>();
+            services.AddScoped<IIdentityService, IdentityService>();
 
             return services;
         }

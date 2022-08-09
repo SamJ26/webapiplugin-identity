@@ -9,19 +9,18 @@ using WebApiPlugin.Identity.Options;
 
 namespace WebApiPlugin.Identity
 {
-    public class IdentityService<TUser> : IIdentityService
-        where TUser : IdentityUser<Guid>, new()
+    public class IdentityService : IIdentityService
     {
-        private readonly UserManager<TUser> userManager;
-        private readonly SignInManager<TUser> signInManager;
-        private readonly IUserStore<TUser> userStore;
+        private readonly UserManager<IdentityUser> userManager;
+        private readonly SignInManager<IdentityUser> signInManager;
+        private readonly IUserStore<IdentityUser> userStore;
         private readonly JwtOptions jwtOptions;
         private readonly Options.IdentityOptions identityOptions;
 
         public IdentityService(
-            UserManager<TUser> userManager,
-            SignInManager<TUser> signInManager,
-            IUserStore<TUser> userStore,
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager,
+            IUserStore<IdentityUser> userStore,
             IOptions<JwtOptions> jwtOptions,
             IOptions<Options.IdentityOptions> identityOptions)
         {
@@ -39,7 +38,7 @@ namespace WebApiPlugin.Identity
 
         public async Task<IdentityResult> CreateUserAsync(RegisterRequestDto registerRequest, CancellationToken cancellationToken)
         {
-            var user = new TUser();
+            var user = new IdentityUser();
 
             await userStore.SetUserNameAsync(user, registerRequest.UserName, cancellationToken);
 

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiPlugin.Identity", "WebApiPlugin.Identity\WebApiPlugin.Identity.csproj", "{43359E12-47DD-40F7-A837-F61FBBD7BACE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiPlugin.Identity.Sample", "WebApiPlugin.Identity.Sample\WebApiPlugin.Identity.Sample.csproj", "{3036DE89-F1B0-4798-8C27-86FCF538A891}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{43359E12-47DD-40F7-A837-F61FBBD7BACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43359E12-47DD-40F7-A837-F61FBBD7BACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43359E12-47DD-40F7-A837-F61FBBD7BACE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3036DE89-F1B0-4798-8C27-86FCF538A891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3036DE89-F1B0-4798-8C27-86FCF538A891}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3036DE89-F1B0-4798-8C27-86FCF538A891}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3036DE89-F1B0-4798-8C27-86FCF538A891}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
