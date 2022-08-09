@@ -66,6 +66,8 @@ namespace WebApiPlugin.Identity.Extensions
                 };
             });
 
+            services.AddAuthorization();
+
             services.AddScoped<IIdentityService, IdentityService>();
 
             return services;

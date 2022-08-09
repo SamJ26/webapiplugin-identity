@@ -32,10 +32,18 @@ namespace WebApiPlugin.Identity.Sample
 
             app.UseHttpsRedirection();
 
-            app.MapGet("api/data", () => Results.Ok(new List<string>() { "1", "2", "3" }));
+            // Added
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             // Added
             app.MapEndpointsForIdentity();
+
+            app.MapGet("api/anonymous/data", () => Results.Ok(new List<string>() { "1", "2", "3" }))
+                .AllowAnonymous();
+
+            app.MapGet("api/authorized/data", () => Results.Ok(new List<string>() { "4", "5", "6" }))
+                .RequireAuthorization();
 
             app.Run();
         }
