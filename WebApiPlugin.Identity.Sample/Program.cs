@@ -1,4 +1,4 @@
-namespace WebApiPlugin.Identity
+namespace WebApiPlugin.Identity.Sample
 {
     public class Program
     {
